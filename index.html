@@ -3,51 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Links</title>
+  <title>Yahia Nasr</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Lively animated background: shifting gradient + floating blurred blobs */
+    :root{
+
+      --bg-accent-1:#6bffb0; /* mint */
+      --bg-accent-2:#6bc1ff; /* sky */
+
+    }
+
+    .lively-bg{
+      position:relative;
+      min-height:100vh;
+      overflow:hidden;
+      background:linear-gradient(120deg,var(--bg-accent-1),var(--bg-accent-2) 30%);
+      background-size:200% 200%;
+      animation: gradientShift 12s ease infinite;
+    }
+
+    @keyframes gradientShift{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    /* floating blurred blobs */
+    .lively-bg > .blob{
+      position:absolute;
+      filter:blur(36px) saturate(120%);
+      opacity:0.65;
+      transform:translate3d(0,0,0);
+      mix-blend-mode:overlay;
+      animation: float 8s ease-in-out infinite;
+      border-radius:50%;
+      pointer-events:none; /* don't block clicks */
+      z-index:1; /* behind content overlay */
+    }
+
+    .lively-bg > .blob:nth-of-type(1){
+      width:360px;height:360px;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), rgba(255,107,107,0.15) 40%, transparent 60%);
+      left:-6%;top:10%;animation-duration:14s
+    }
+    .lively-bg > .blob:nth-of-type(2){
+      width:420px;height:420px;background:radial-gradient(circle at 70% 40%, rgba(255,255,255,0.35), rgba(103,201,255,0.18) 35%, transparent 60%);
+      right:-8%;top:-6%;animation-duration:18s;animation-delay:2s
+    }
+    .lively-bg > .blob:nth-of-type(3){
+      width:300px;height:300px;background:radial-gradient(circle at 40% 60%, rgba(255,255,255,0.25), rgba(255,215,120,0.18) 35%, transparent 60%);
+      left:10%;bottom:-8%;animation-duration:16s;animation-delay:1s
+    }
+    .lively-bg > .blob:nth-of-type(4){
+      width:220px;height:220px;background:radial-gradient(circle at 60% 30%, rgba(255,255,255,0.22), rgba(107,255,176,0.14) 35%, transparent 60%);
+      right:18%;bottom:6%;animation-duration:12s;animation-delay:3s
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0) translateX(0) scale(1)}
+      50%{transform:translateY(-18px) translateX(8px) scale(1.03)}
+      100%{transform:translateY(0) translateX(0) scale(1)}
+    }
+
+    /* ensures content remains readable */
+    .content-overlay{
+      position:relative;
+      z-index:20; /* above blobs and vignette */
+      background: rgba(20,20,25, 0.78); /* darker glass for better contrast */
+      color: #fff;
+      padding: 1.25rem; /* small padding so links don't touch edges on very small screens */
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px) saturate(115%);
+      -webkit-backdrop-filter: blur(6px) saturate(115%);
+    }
+
+    /* make sure link buttons stand out on darker overlay */
+    .content-overlay a.block{
+      background: #ffffff; /* keep buttons white */
+      color: #000000;
+    }
+    .content-overlay .text-gray-400{ color: rgba(255,255,255,0.78) !important; }
+    .content-overlay .text-white{ color: #fff !important; }
+
+    /* subtle vignette for focus */
+    .lively-bg::after{
+      content:"";
+      position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.28) 100%);
+      mix-blend-mode:multiply;
+      z-index:5;
+    }
+  </style>
 </head>
-<body class="bg-black min-h-screen flex items-center justify-center p-4">
-  <div class="w-full max-w-md mx-auto">
+<body class="lively-bg flex items-center justify-center p-4">
+  <!-- decorative blobs (visual only) -->
+  <div class="blob" aria-hidden="true"></div>
+  <div class="blob" aria-hidden="true"></div>
+  <div class="blob" aria-hidden="true"></div>
+  <div class="blob" aria-hidden="true"></div>
+
+  <div class="w-full max-w-md mx-auto content-overlay">
     <div class="text-center mb-8">
-      <div class="w-24 h-24 bg-gray-800 rounded-full mx-auto mb-4"></div>
-      <h1 class="text-white text-2xl font-bold mb-2">Your Name</h1>
-      <p class="text-gray-400 text-sm">Your bio or tagline goes here</p>
+      <div class="w-24 h-24 bg-gray-800 rounded-full mx-auto mb-4">
+        <span class="flex items-center justify-center w-full h-full text-5xl font-bold text-white select-none">Y</span>
+      </div>
+      <h1 class="text-white text-2xl font-bold mb-2">Yahia Nasr</h1>
+      <p class="text-gray-400 text-sm"></p>
     </div>
     
     <div class="space-y-4">
-      <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
-        Website
+      <a href="https://yahianasr.me" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
+      <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"></path>
+      </svg>
+      <span class="flex-1 text-black text-center">Website</span>
       </a>
-      <a href="https://example.com/portfolio" target="_blank" rel="noopener noreferrer" class="block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
-        Portfolio
+      <a href="https://medium.com/@YahiaNasr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
+      <svg class="w-6 h-6 text-gray-700" viewBox="0 0 1043.63 592.71" fill="currentColor" aria-hidden="true">
+        <g>
+        <path d="M588.67 296.14c0 163.51-131.93 296.14-294.33 296.14S0 459.65 0 296.14 131.93 0 294.34 0s294.33 132.63 294.33 296.14z"/>
+        <path d="M1043.63 296.14c0 144.77-64.7 262.14-144.57 262.14s-144.57-117.37-144.57-262.14S819.19 34 899.06 34s144.57 117.37 144.57 262.14z"/>
+        <ellipse cx="873.14" cy="296.14" rx="59.19" ry="262.14"/>
+        </g>
+      </svg>
+      <span class="flex-1 text-black text-center">Medium</span>
       </a>
-      <a href="https://example.com/blog" target="_blank" rel="noopener noreferrer" class="block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
-        Blog
+      <a href="https://substack.com/@yahianasr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
+      <svg class="w-6 h-6 text-gray-700" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+        <rect width="32" height="32" rx="6" fill="#FF6719"/>
+        <path d="M8 10h16v2H8zm0 4h16v2H8zm0 4h16v2H8z" fill="#fff"/>
+      </svg>
+      <span class="flex-1 text-black text-center">Substack</span>
       </a>
-      <a href="mailto:hello@example.com" target="_blank" rel="noopener noreferrer" class="block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
-        Contact
+      <a href="https://www.goodreads.com/user/show/67068099-yahia" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
+      <svg class="w-6 h-6 text-gray-700" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.5 6.5c0-2.485-2.015-4.5-4.5-4.5s-4.5 2.015-4.5 4.5c0 2.485 2.015 4.5 4.5 4.5s4.5-2.015 4.5-4.5zm-4.5 6.5c-3.314 0-6 2.239-6 5v2c0 .553.447 1 1 1h10c.553 0 1-.447 1-1v-2c0-2.761-2.686-5-6-5z"/>
+      </svg>
+      <span class="flex-1 text-black text-center">Goodreads</span>
+      </a>
+      <a href="mailto:yahyasadig20132@gmail.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 block w-full py-4 px-6 bg-white text-black text-center font-medium rounded-lg hover:bg-gray-200 transition-colors">
+      <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      <span class="flex-1 text-black text-center">Contact</span>
       </a>
     </div>
 
     <div class="flex justify-center gap-6 mt-8">
-      <a href="https://twitter.com/username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">
+      <a href="https://twitter.com/theyahianasr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
         </svg>
       </a>
-      <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+      <a href="https://instagram.com/yahia_nsr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M7.5 2h9A5.5 5.5 0 0122 7.5v9a5.5 5.5 0 01-5.5 5.5h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2z"></path>
         </svg>
       </a>
-      <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+      <a href="https://github.com/y4h14" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"></path>
         </svg>
       </a>
-      <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+      <a href="https://linkedin.com/in/yahianasr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 6a2 2 0 100-4 2 2 0 000 4z"></path>
+        </svg>
+      </a>
+      <a href="https://t.me/y4h14" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Telegram">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 2L11 13"></path>
+          <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
         </svg>
       </a>
     </div>

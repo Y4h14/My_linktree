@@ -1,2 +1,3 @@
-# My_linktree
-A simple HTML site for my links
+# My Linktree
+
+A simple Linktree-style page to share all my links in one place.
